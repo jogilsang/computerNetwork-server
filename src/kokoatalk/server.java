@@ -17,7 +17,7 @@ public class server {
 
 	public static String ServerIP, ClientMessage;
 	public static ServerSocket serverSocket;
-	public static int serverPort = 18888;
+	public static int serverPort = 15555;
 	public static DataOutputStream dos;
 	public static DataInputStream dis;
 
@@ -27,7 +27,8 @@ public class server {
 		System.out.println("server");
 
 		// 아이피를 얻는다
-		ServerIP = getIpAddress();
+		//ServerIP = getIpAddress();
+		ServerIP = "127.0.0.1";
 		
 		// 서버 아이피 표시
 		System.out.println(ServerIP);
@@ -35,9 +36,7 @@ public class server {
 		// 서버의 쓰레드를 시작한다
 		Thread socketServerThread = new Thread(new socketServerThread());
 		socketServerThread.start();
-
 	}
-
 	// 서버 쓰레드
 	static class socketServerThread extends Thread {
 		public void run() {
@@ -45,6 +44,7 @@ public class server {
 
 				// 서버 소캣생성
 				serverSocket = new ServerSocket(serverPort);
+				
 				while (true) {
 
 					// accept 실행
